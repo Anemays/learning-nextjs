@@ -28,14 +28,14 @@ import { useRouter } from 'next/router';
 
 const prisma = new PrismaClient();
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async ({  }) => {
     const posts = await prisma.post.findMany();
     return {
         props: {
             posts
         }
     };
-};
+}
 
 const Main = ({ posts }) => {
     const router = useRouter();
@@ -43,7 +43,7 @@ const Main = ({ posts }) => {
     const Form_Add = (onClose) => {
         return (
             <Formik
-                initialValues={{  }}
+                initialValues={{}}
                 onSubmit={(values, actions) => {
                     setTimeout(async () => {
 
@@ -102,7 +102,7 @@ const Main = ({ posts }) => {
     const Form_Delete = (data, onClose) => {
         return (
             <Formik
-                initialValues={ data }
+                initialValues={data}
                 onSubmit={(values, actions) => {
                     setTimeout(async () => {
 
@@ -317,12 +317,12 @@ const Main = ({ posts }) => {
                 </Thead>
                 <Tbody>
                     {posts.map(post => (
-                    <Tr>
-                        <Td isNumeric>{post.id}</Td>
-                        <Td>{post.title}</Td>
-                        <Td>{post.excerpt}</Td>
-                        <Td>{Button_Edit(post)} {Button_Delete(post)}</Td>
-                    </Tr>
+                        <Tr>
+                            <Td isNumeric>{post.id}</Td>
+                            <Td>{post.title}</Td>
+                            <Td>{post.excerpt}</Td>
+                            <Td>{Button_Edit(post)} {Button_Delete(post)}</Td>
+                        </Tr>
                     ))}
                 </Tbody>
                 <Tfoot>

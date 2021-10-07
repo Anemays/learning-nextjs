@@ -17,8 +17,10 @@
     "framer-motion": "^4.1.17",
     "next": "11.1.2",
     "next-iron-session": "^4.2.0",
+    "node-excel-export": "^1.4.4",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "xlsx": "^0.17.2"
   },
   "devDependencies": {
     "eslint": "7.32.0",

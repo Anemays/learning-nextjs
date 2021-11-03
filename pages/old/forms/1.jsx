@@ -16,7 +16,7 @@ import {
     Button
 } from "@chakra-ui/react"
 
-const Main = () => {
+function Main() {
     return (
         <>
             <FormControl id="email">

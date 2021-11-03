@@ -1,8 +1,6 @@
 import React from 'react'
-import { ExportToExcel } from '../components/ExportToExcel';
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient();
+import ExportToExcel from '../../lib/features/ExportToExcel';
+import prisma from '../../lib/db/prisma';
 
 function App({ posts }) {
     //const [data, setData] = React.useState([])

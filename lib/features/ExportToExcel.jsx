@@ -2,7 +2,7 @@ import React from 'react'
 import * as XLSX from "xlsx";
 //import * as FileSaver from "file-saver";
 
-export const ExportToExcel = ({ apiData, fileName }) => {
+export default function ExportToExcel({ apiData, fileName }) {
     const fileType =
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
     const fileExtension = ".xlsx";

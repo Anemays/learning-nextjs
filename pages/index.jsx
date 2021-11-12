@@ -1,14 +1,7 @@
-import prisma from '../lib/db/prisma';
 import NavBar from '../components/header/navbar';
+import { getSSP } from '../lib/props/serverSide';
 
-export const getServerSideProps = async ({  }) => {
-    await prisma.$disconnect();
-    return {
-        props: {
-
-        }
-    };
-}
+export const getServerSideProps = getSSP();
 
 function Main ({ posts }) {
     return (

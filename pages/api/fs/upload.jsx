@@ -62,12 +62,25 @@ export default async function handler (req, res) {
     //console.log(finalFilePath)
     let finalFileName = basename(finalFilePath)
     //console.log(finalFileName)
+    const extension = extname(finalFileName)
+    const now = new Date();
+    const d = now.getDate();
+    const M = now.getMonth() + 1; //Month from 0 to 11
+    const Y = now.getFullYear();
+    const H = now.getHours();
+    const m = now.getMinutes();
+    const s = now.getSeconds();
+    let str = `${Y}${M}${d}${H}${m}${s}`;
+    finalFileName = `${str}${extension}`;
 
     // avoids potential file overrides
     if (await fileExists(finalFilePath)) {
-      const extension = extname(finalFileName)
       const timestamp = Date.now()
       finalFileName = `${finalFileName.substr(0, finalFileName.length - extension.length)}_copy_${timestamp}${extension}`
+      finalFilePath = join(serverRuntimeConfig.DATA_PATH, finalFileName)
+    } else {
+      const timestamp = Date.now()
+      finalFileName = `${finalFileName.substr(0, finalFileName.length - extension.length)}${extension}`
       finalFilePath = join(serverRuntimeConfig.DATA_PATH, finalFileName)
     }
     //console.log(file.filepath)
